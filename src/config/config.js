@@ -7,8 +7,8 @@ export default {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-  width: 800,
-  height: 600,
+  width: 1200,
+  height: 780,
   physics: {
     default: 'arcade',
     arcade: {
@@ -16,5 +16,5 @@ export default {
         debug: true
     }
   },
-//pixelArt: true
+pixelArt: true
 };
