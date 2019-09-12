@@ -22,26 +22,50 @@ export default class Scene1 extends Phaser.Scene {
     // Declare variables for center of the scene
     this.centerX = this.cameras.main.width / 2;
     this.centerY = this.cameras.main.height / 2;
+
   }
 
   create (data) {
     //Create the scene
     var background = this.add.sprite(1636/2,828/2, 'background');
-    this.player = this.physics.add.sprite(this.centerX, this.centerY + 250, 'ship');
-    this.player.setScale(0.5);
+    var text = this.add.text(450, 50, "Save The Dogs!!!", {
+      fontSize: '32px'
+    });
+    this.player = this.physics.add.sprite(this.centerX, this.centerY + 400, 'ship');
+    this.player.setScale(0.3);
     this.player.setCollideWorldBounds(true);
-    this.physics.world.setBounds(0,0, 1200, 960);
+    this.physics.world.setBounds(0,0, 1200, this.centerY+400);
+
+    this.score = 0;
+    this.scoreText = this.add.text(1000, 100, 'Score: ' + this.score);
+
+    // var pup = [
+    //   this.add.sprite(10, 0, 'bean'),
+    //   this.add.sprite(10, 0, 'bernie'),
+    //   this.add.sprite(10, 0, 'dean'),
+    //   this.add.sprite(10, 0, 'bruiser')
+    //   this.add.sprite(10, 0, 'tater')
+    // ];
+    //
+    // pup.setScale(0.5);
+
 
     this.enemyGroup = this.physics.add.group({
-      key: "soda",
-      repeat: 4,
+      //setScale: { x: 0.2, y: 0.2},
+      key: "bean",
+      repeat: 12,
       setXY: {
-        x: 100,
-        y: 100,
-        stepX: 0,
-        stepY: 100 //makes new enemy down 100
+        x: 50,
+        y: 0,
+        stepX: 100,
+        stepY: 30 //makes new enemy down 100
       }
     });
+
+    this.enemyGroup.children.iterate(function(child) {
+      child.setScale(0.15);
+    });
+
 
 }
 
@@ -57,5 +81,18 @@ export default class Scene1 extends Phaser.Scene {
       this.player.x += speed;
 
     }
+
+    this.physics.add.overlap(this.player, this.enemyGroup, this.collectPup, null, this);
+
+  }
+
+  collectPup (player, pup)
+  {
+    pup.disableBody(true, true);
+
+    //  Add and update the score
+    this.score += 10;
+    this.scoreText.setText('Score: ' + this.score);
+
   }
 }
