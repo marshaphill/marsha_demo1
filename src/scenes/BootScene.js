@@ -1,4 +1,5 @@
 /*global Phaser*/
+import * as ChangeScene from './ChangeScene.js';
 export default class BootScene extends Phaser.Scene {
   constructor () {
     super('Boot');
@@ -25,9 +26,12 @@ export default class BootScene extends Phaser.Scene {
   }
 
   create (data) {
+        ChangeScene.addSceneEventListeners(this);
     //Create the scene
     var background = this.add.sprite(1636/2,828/2, 'background');
     var logo = this.add.image(this.centerX, this.centerY - 45, 'logo');
+    var tip = this.add.text(this.centerX -160 , this.centerY + 250,  "TIP: Save the dogs avoid the aliens!");
+
     logo.setScale(1.3);
 
     var sound = this.sound.add('pops');
