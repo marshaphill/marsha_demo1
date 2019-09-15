@@ -9,6 +9,7 @@ export default class Scene1 extends Phaser.Scene {
   init (data) {
     // Initialization code goes here
     this.score = data.score;
+    this.alienScore = data.alienScore;
   }
 
   preload () {
@@ -50,6 +51,7 @@ export default class Scene1 extends Phaser.Scene {
     this.physics.world.setBounds(0,0, 1200, this.centerY+400);
 
     this.score = 0;
+    this.alienScore = 0;
     this.scoreText = this.add.text(1000, 100, 'Score: ' + this.score);
 
     this.xRan = function(){
@@ -131,7 +133,7 @@ export default class Scene1 extends Phaser.Scene {
     //this.physics.add.overlap(this.enemyGroup, this.alienGroup, this.alienOnPup, null, this);)
 
     if(cursors.space.isDown){
-      this.scene.start('EndGame', {score: this.score});
+      this.scene.start('EndGame', {score: this.score, alienScore: this.alienScore});
       console.log(this.score);
     }
 
@@ -154,6 +156,7 @@ export default class Scene1 extends Phaser.Scene {
 
     //  Add and update the score
     this.score -= 1;
+    this.alienScore += 1;
     //this.scoreText.setText('Saved ' + this.score + ' puppies!');
 
   }

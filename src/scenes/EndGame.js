@@ -8,6 +8,8 @@ export default class EndGame extends Phaser.Scene {
  init (data) {
    // Initialization code goes here
    this.score = data.score
+   // Initialization code goes here
+   this.alienScore = data.alienScore;
  }
 
  preload () {
@@ -32,7 +34,9 @@ export default class EndGame extends Phaser.Scene {
    var background = this.add.sprite(1636/2,828/2, 'background');
    var text = this.add.sprite(this.centerX , this.centerY, 'over');
 
-   var score = this.add.text(this.centerX -80 , this.centerY + 100,  data.score + " pups are greatful!");
+   var score = this.add.text(this.centerX -80 , this.centerY + 100,  data.score + " pups are grateful!");
+   var score = this.add.text(this.centerX -100 , this.centerY + 150,  data.alienScore + " puppies were stolen!");
+
 
    var tater = this.add.sprite(200, 150, 'tater');
    tater.setScale(0.5);
