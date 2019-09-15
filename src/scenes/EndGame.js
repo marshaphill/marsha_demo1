@@ -35,7 +35,7 @@ export default class EndGame extends Phaser.Scene {
    var text = this.add.sprite(this.centerX , this.centerY, 'over');
 
    var score = this.add.text(this.centerX -80 , this.centerY + 100,  data.score + " pups are grateful!");
-   var score = this.add.text(this.centerX -100 , this.centerY + 150,  data.alienScore + " puppies were stolen!");
+   var score = this.add.text(this.centerX -100 , this.centerY + 170,  data.alienScore + " puppies were stolen!");
 
 
    var tater = this.add.sprite(200, 150, 'tater');

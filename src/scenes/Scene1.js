@@ -98,7 +98,7 @@ export default class Scene1 extends Phaser.Scene {
       repeat: 4,
       setXY: {
         x: Math.floor(Math.random() * 1000) + 50,
-        y: Math.floor(Math.random() * 400),
+        y: Math.floor(Math.random() * - 1000),
       }
     });
 
@@ -106,7 +106,7 @@ export default class Scene1 extends Phaser.Scene {
       child.setScale(0.15);
 
       child.x = Math.floor(Math.random() * 1000) + 50,
-      child.y = Math.floor(Math.random() * - 400)
+      child.y = Math.floor(Math.random() * - 1000)
     });
 
 
